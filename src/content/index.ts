@@ -1,18 +1,13 @@
-// Content script for Chrome extension
-// This runs in the context of web pages
+import { MESSAGE_TYPES, type StateChangedMessage } from '@/types/messages'
 
-console.log('Content script loaded')
+// Listen for state change broadcasts from background script
+chrome.runtime.onMessage.addListener((message: unknown) => {
+  const typedMessage = message as { type: string }
 
-// Example: Inject some functionality into the page
-const style = document.createElement('style')
-style.textContent = `
-  .chrome-extension-highlight {
-    background-color: yellow !important;
+  if (typedMessage.type === MESSAGE_TYPES.STATE_CHANGED) {
+    const stateMessage = message as StateChangedMessage
+    console.log('Feature state changed:', stateMessage.enabled)
+    // Content script can react to state changes here
+    // For example, enable/disable features on the page
   }
-`
-document.head.appendChild(style)
-
-// Example: Send message to background script
-chrome.runtime.sendMessage({ type: 'content_loaded' }, (response) => {
-  console.log('Response from background:', response)
 })

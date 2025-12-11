@@ -28,7 +28,8 @@
   },
   "permissions": [
     "activeTab",
-    "storage"
+    "storage",
+    "tabs"
   ],
   "web_accessible_resources": [
     {
