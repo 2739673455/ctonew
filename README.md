@@ -1,36 +1,93 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Chrome Extension with Vite and React
+
+This is a Chrome extension project built with Vite, React, and TypeScript.
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js (v18 or later)
+- npm or yarn
+
+### Installation
+
+```bash
+npm install
+# or
+yarn install
+```
+
+### Development
+
+Run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+This will start Vite in development mode with hot reloading.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Building
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+To build the extension for production:
 
-## Learn More
+```bash
+npm run build
+```
 
-To learn more about Next.js, take a look at the following resources:
+This will create a `dist` folder with all the compiled assets ready for Chrome.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Watch mode
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+For continuous building during development:
 
-## Deploy on Vercel
+```bash
+npm run watch
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Loading the Extension in Chrome
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Build the extension: `npm run build`
+2. Open Chrome and go to `chrome://extensions`
+3. Enable "Developer mode" (toggle in top right)
+4. Click "Load unpacked" and select the `dist` folder
+
+## Project Structure
+
+```
+src/
+├── background/      # Background script
+├── content/         # Content scripts
+├── popup/           # Popup UI (React)
+├── styles/          # Global styles
+└── types/           # TypeScript types
+
+public/
+├── icons/           # Extension icons (16x16, 48x48, 128x128)
+└── manifest.json    # Chrome extension manifest
+```
+
+## Features
+
+- **Vite** for fast development and building
+- **React 19** for UI components
+- **TypeScript** for type safety
+- **Chrome Extension Manifest V3**
+- Multi-entry build (background, content, popup)
+
+## Available Scripts
+
+- `npm run dev`: Start development server
+- `npm run build`: Build for production
+- `npm run watch`: Watch for changes and rebuild
+- `npm run lint`: Run ESLint
+
+## Customization
+
+Edit the following files to customize your extension:
+
+- `manifest.json`: Extension configuration
+- `src/background/index.ts`: Background script
+- `src/content/index.ts`: Content script
+- `src/popup/main.tsx`: Popup UI
+- `public/icons/*`: Extension icons
