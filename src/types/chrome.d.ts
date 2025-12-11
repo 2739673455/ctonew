@@ -5,7 +5,17 @@ declare namespace chrome.runtime {
   interface Message {
     type: string
     data?: any
+    enabled?: boolean
   }
+}
+
+declare namespace chrome.storage {
+  interface StorageArea {
+    get(keys: string | string[] | Record<string, any>, callback: (result: Record<string, any>) => void): void
+    set(items: Record<string, any>, callback?: () => void): void
+  }
+
+  const sync: StorageArea
 }
 
 declare module '*.svg' {
