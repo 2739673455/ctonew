@@ -82,11 +82,22 @@ public/
 - `npm run watch`: Watch for changes and rebuild
 - `npm run lint`: Run ESLint
 
+## Permissions
+
+The extension uses the following permissions in Manifest V3:
+
+- **storage**: Allows the extension to use the `chrome.storage` API for persistent data storage
+- **tabs**: Required to interact with browser tabs, including accessing tab information and querying active tabs
+- **scripting**: Allows dynamic script execution on web pages, enabling content script injection capabilities
+- **host_permissions**: Specifies domains where the content script runs (currently configured for Google, Bing, Yahoo, Baidu, and DuckDuckGo)
+
+These permissions are declared in `manifest.json` and are necessary for the extension to function across search engines and new tab pages.
+
 ## Customization
 
 Edit the following files to customize your extension:
 
-- `manifest.json`: Extension configuration
+- `manifest.json`: Extension configuration (permissions, scripts, icons)
 - `src/background/index.ts`: Background script
 - `src/content/index.ts`: Content script
 - `src/popup/main.tsx`: Popup UI

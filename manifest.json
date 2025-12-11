@@ -17,8 +17,15 @@
   },
   "content_scripts": [
     {
-      "matches": ["<all_urls>"],
-      "js": ["content.js"]
+      "matches": [
+        "https://*.google.com/*",
+        "https://*.bing.com/*",
+        "https://*.yahoo.com/*",
+        "https://*.baidu.com/*",
+        "https://*.duckduckgo.com/*"
+      ],
+      "js": ["content.js"],
+      "css": []
     }
   ],
   "icons": {
@@ -27,8 +34,16 @@
     "128": "icons/icon128.png"
   },
   "permissions": [
-    "activeTab",
-    "storage"
+    "storage",
+    "tabs",
+    "scripting"
+  ],
+  "host_permissions": [
+    "https://*.google.com/*",
+    "https://*.bing.com/*",
+    "https://*.yahoo.com/*",
+    "https://*.baidu.com/*",
+    "https://*.duckduckgo.com/*"
   ],
   "web_accessible_resources": [
     {
